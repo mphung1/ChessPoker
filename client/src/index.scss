@@ -1,0 +1,82 @@
+$theme: HSL(200, 35%, 85%);
+$primaryColor: HSL(195, 100%, 40%);
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+body {
+  font: 14px "Lucida Console", "Courier New", monospace;
+  background-color: $theme;
+  min-width: 32rem
+}
+
+@media (max-width: 36rem) {
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: transparent;
+  border: 1px solid transparent;
+  float: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
+  height: 3rem;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 3rem;
+
+  :focus {
+    outline: none;
+    background: #ddd;
+  }
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+  margin-left: 4.5rem;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.game-status{
+  margin-top: 0.5rem;
+}
+
+.taken-pieces{
+  margin-top: 4.5rem;
+  min-height: 3rem;
+}
+
+.dark-square{
+  background-color: $primaryColor;
+}
+
+.light-square{
+  background-color: #FFFFFF;
+}
+
+#player-turn-box{
+  width: 32px;
+  height: 32px;
+  border: 1px solid #000;
+  margin-bottom: 0.5rem
+}
