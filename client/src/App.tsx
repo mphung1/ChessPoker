@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
-import Layout from 'layouts/main';
+import Layout from 'routes/main';
 import Choker from 'pages/Choker';
 import Bughouse from 'pages/Bughouse';
 import Bot from 'pages/Bughouse/Bot';
 import Multiplayer from 'pages/Bughouse/Multiplayer';
 import NotFoundPage from 'pages/NotFound';
+import { UserContext } from './middlewares/UserContext';
 
 export default function App() {
   return (
