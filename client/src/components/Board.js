@@ -27,7 +27,7 @@ export default class Board extends React.Component {
       }
       board.push(<div className="board-row" key={(Math.random() * 10000).toFixed(0)}>{squareRows}</div>);
     }
-    return <div >{board}</div>;
+    return <div>{board}</div>;
   }
 }
 

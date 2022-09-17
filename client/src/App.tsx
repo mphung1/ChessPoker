@@ -5,11 +5,14 @@ import Bughouse from 'pages/Bughouse';
 import Bot from 'pages/Bughouse/Bot';
 import Multiplayer from 'pages/Bughouse/Multiplayer';
 import NotFoundPage from 'pages/NotFound';
-import { UserContext } from './middlewares/UserContext';
+import { UserContext } from './middleware/UserContext';
+import Navbar from 'components/Navbar/Navbar';
+import Hero from 'components/Hero/Hero';
 
 export default function App() {
   return (
     <div className="App">
+      <Navbar />
       <Router>
         <Routes>
           <Route
