@@ -8,6 +8,10 @@ import NotFoundPage from 'pages/NotFound';
 import { UserContext } from './middleware/UserContext';
 import Navbar from 'components/Navbar/Navbar';
 import Hero from 'components/Hero/Hero';
+import Rules from 'pages/Rules/Rules';
+import Leaderboard from 'pages/Leaderboard/Leaderboard';
+import SignUp from 'pages/Auth/SignUp';
+import LogIn from 'pages/Auth/LogIn';
 
 export default function App() {
   return (
@@ -17,7 +21,7 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Layout />}
+            element={<Hero />}
           />
           <Route
             path="bughouse"
@@ -35,6 +39,22 @@ export default function App() {
           <Route
             path="choker"
             element={<Choker />}
+          />
+          <Route
+            path="Rules"
+            element={<Rules />}
+          />
+          <Route
+            path="Leaderboard"
+            element={<Leaderboard />}
+          />
+          <Route
+            path="SignUp"
+            element={<SignUp />}
+          />
+          <Route
+            path="LogIn"
+            element={<LogIn />}
           />
           <Route
             path="*"

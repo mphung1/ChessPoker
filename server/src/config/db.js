@@ -1,13 +1,11 @@
 const mongoose = require ('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      userCreateIndex: true,
-    })
-    console.log('Connected.');
+    await mongoose.connect("mongodb://0.0.0.0:27017/ChessDeck")
+    console.log('Connected to mongodb');
 
   } catch (err) {
     console.log(err.message);

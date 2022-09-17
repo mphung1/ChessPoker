@@ -2,10 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const http = require('http');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/userRoutes')
+const mongoose = require('mongoose');
+const userRoutes = require('./routes/userRoutes');
 const connectDB = require('./config/db');
-const SocketIO = require('socket.io')
-const { notFound, errorHandler } = require('./middleware/error')
+const SocketIO = require('socket.io');
+const { notFound, errorHandler } = require('./middleware/error');
 dotenv.config();
 
 const app = express();
@@ -31,9 +32,9 @@ app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 
 app.use(userRoutes);
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
-//db
+connectDB();
 
 httpServer.listen(port, () => console.log(`listening on port ${port}`))
