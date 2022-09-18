@@ -14,7 +14,11 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav className="NavbarItems">
-        <h1 className="navbar-logo">ChessDeck</h1>
+        <h1 className="navbar-logo">
+          <a href="." style={{ textDecoration: 'none', color: 'red' }}>
+          ChessDeck
+          </a>
+        </h1>
         <div
           className="menu-icon"
           onClick={this.handleClick}

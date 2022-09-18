@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const generateToken = require("../config/generateToken");
 
@@ -7,38 +8,37 @@ router.get("/", function (req,res) {
     res.status(200).send("hello world")
 });
 
-router.post("/api/register", async function (req,res) {
-    console.log(req.body);
-    try {
-      const user = await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-      })
+router.get("/api/user/chips", async function (req,res) {
+      const token = req.headers['x-access-token']
 
-      res.json({status: 'ok'})
+      try {
+          const decoded = jwt.verify(token, "secret_key_123")
+          const email = decode.email
+          const user = await User.findOne({ email: email })
 
-    } catch(err) {
-      console.log(err);
-      res.json({status: 'error', error: 'Duplicate Email'})
-    }
+          return res.json({ status: 'ok', chips: user.chips })
+      } catch (err) {
+          console.log(err)
+          res.json({ status: 'error', err: 'invalid token' })
+      }
 });
 
-router.post("/api/login", async function (req,res) {
-      const user = await User.findOne({
-        email: req.body.email,
-        password: req.body.password
-      })
+router.post("/api/user/chips", async function (req,res) {
+      const token = req.headers['x-access-token']
 
-      if (user) {
-        const token = generateToken(user.name, user.email)
+      try {
+          const decoded = jwt.verify(token, "secret_key_123")
+          const email = decode.email
+          await User.updateOne(
+            { email: email },
+            { $set: { chips: req.body.chips }}
+          )
 
-        return res.json({ status: 'ok', user: token })
-      } else {
-        return res.json({ status: 'error', user: false })
+          return { status: 'ok' }
+      } catch (err) {
+          console.log(err)
+          res.json({ status: 'error', err: 'invalid token' })
       }
-      res.json({status: 'ok'})
-
 });
 
 module.exports = router;

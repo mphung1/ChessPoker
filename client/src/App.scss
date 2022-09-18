@@ -1,6 +1,6 @@
+
 $theme: HSL(200, 35%, 85%);
 $primaryColor: HSL(195, 100%, 40%);
-
 
 * {
   box-sizing: border-box;
@@ -12,9 +12,6 @@ body {
   font: 14px "Lucida Console", "Courier New", monospace;
   background-color: $theme;
   min-width: 32rem
-}
-
-@media (max-width: 36rem) {
 }
 
 .board-row:after {

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'index.scss';
+import 'App.scss';
 import Board from 'components/Board';
 import King from 'components/pieces/King';
 import TakenPieces from 'components/TakenPieces';

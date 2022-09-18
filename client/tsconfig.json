@@ -10,7 +10,8 @@
     "paths": {
       "components/*": ["components/*", "components/"],
       "pages/*": ["pages/*", "pages/"],
-      "layouts/*": ["layouts/*", "layouts/"],
+      "middleware/*": ["middleware/*", "middleware/"],
+      "connection/*": ["connection/*", "connection/"],
       "utils/*": ["utils/*", "utils/"],
     },
     "noImplicitAny": true,

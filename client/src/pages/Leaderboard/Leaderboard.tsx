@@ -1,5 +1,11 @@
+import Hero from 'components/Hero/Hero';
+
 const Leaderboard = () => {
-  return <div> Leaderboard </div>;
+  return (
+    <div>
+      <Hero title="Leaderboard"/>
+    </div>
+  )
 };
 
 export default Leaderboard;

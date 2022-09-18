@@ -1,11 +1,11 @@
 import Hero from 'components/Hero/Hero';
 
-const Rules = () => {
+const Home = () => {
   return (
     <div>
-      <Hero title="Rules"/>
+      <Hero title="Welcome" />
     </div>
   )
-};
+}
 
-export default Rules;
+export default Home;

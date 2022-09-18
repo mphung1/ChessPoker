@@ -4,6 +4,7 @@ const http = require('http');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes')
 const connectDB = require('./config/db');
 const SocketIO = require('socket.io');
 const { notFound, errorHandler } = require('./middleware/error');
@@ -20,8 +21,6 @@ const io = SocketIO(httpServer, {
 });
 
 io.on('connection', (socket) => {
-    console.log('user connected');
-
     socket.on('message', (message) => {
       console.log(message);
       io.emit('message', `${socket.id.substr(0,2)} said ${message}`);
@@ -31,7 +30,9 @@ io.on('connection', (socket) => {
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 
+app.use(authRoutes);
 app.use(userRoutes);
+
 // app.use(notFound);
 // app.use(errorHandler);
 

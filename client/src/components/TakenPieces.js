@@ -1,5 +1,5 @@
 import React from 'react';
-import 'index.scss';
+import 'App.scss';
 import Square from './Square';
 
 export default class TakenPieces extends React.Component {

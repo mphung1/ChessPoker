@@ -1,17 +1,16 @@
-import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
-import Layout from 'routes/main';
-import Choker from 'pages/Choker';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Bot from 'pages/Bot';
 import Bughouse from 'pages/Bughouse';
-import Bot from 'pages/Bughouse/Bot';
-import Multiplayer from 'pages/Bughouse/Multiplayer';
+import Choker from 'pages/Choker';
 import NotFoundPage from 'pages/NotFound';
 import { UserContext } from './middleware/UserContext';
 import Navbar from 'components/Navbar/Navbar';
-import Hero from 'components/Hero/Hero';
+import Home from 'pages/Home/Home';
 import Rules from 'pages/Rules/Rules';
 import Leaderboard from 'pages/Leaderboard/Leaderboard';
 import SignUp from 'pages/Auth/SignUp';
 import LogIn from 'pages/Auth/LogIn';
+import Game from 'pages/Game/Game';
 
 export default function App() {
   return (
@@ -21,25 +20,27 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<Hero />}
+            element={<Home />}
           />
+
           <Route
-            path="bughouse"
-            element={<Bughouse />}
+            path="Game"
+            element={<Game />}
           >
             <Route
               path="bot"
               element={<Bot />}
             />
             <Route
-              path="multiplayer"
-              element={<Multiplayer />}
+              path="bughouse"
+              element={<Bughouse />}
+            />
+            <Route
+              path="choker"
+              element={<Choker />}
             />
           </Route>
-          <Route
-            path="choker"
-            element={<Choker />}
-          />
+
           <Route
             path="Rules"
             element={<Rules />}

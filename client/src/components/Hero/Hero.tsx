@@ -1,11 +1,11 @@
 import './Hero.scss';
+import background from './choker.jpg';
 
-const Hero = () => {
+const Hero = ({title} : {title: string}) => {
   return (
     <div className="hero-image">
       <div className="hero-text">
-        <h1>ChessDeck</h1>
-        <button>Join anonymously</button>
+        <h1 style={{fontSize: '50px'}}> {title} </h1>
       </div>
     </div>
   );
