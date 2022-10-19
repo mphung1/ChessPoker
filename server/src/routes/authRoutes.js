@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require("../models/User");
 const generateToken = require("../config/generateToken");
 
@@ -31,14 +32,23 @@ router.post("/api/auth/login", async function (req,res) {
         email: req.body.email,
         // password: req.body.password
       })
+
       if (!user) {
+
         return { status: 'error', err: 'Failed login attempt' }
       }
 
-      const isValidPassword = matchPassword(req.body.password)
+      // const isValidPassword = matchPassword(req.body.password)
+      const isValidPassword = await bcrypt.compare(
+        req.body.password,
+        user.password
+      )
 
       if (isValidPassword) {
-        const token = generateToken(user.name, user.email)
+        const token = jwt.sign(
+          {name: user.name, email: user.email},
+          'secret_key_123'
+        )
 
         return res.json({ status: 'ok', user: token })
       } else {

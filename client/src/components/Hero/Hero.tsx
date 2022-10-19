@@ -1,12 +1,17 @@
 import './Hero.scss';
-import background from './choker.jpg';
 
-const Hero = ({title} : {title: string}) => {
+interface Props {
+  children: any;
+  background: string;
+}
+
+const Hero = ({ children, background }: Props) => {
   return (
-    <div className="hero-image">
-      <div className="hero-text">
-        <h1 style={{fontSize: '50px'}}> {title} </h1>
-      </div>
+    <div
+      className="hero-image"
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      {children}
     </div>
   );
 };

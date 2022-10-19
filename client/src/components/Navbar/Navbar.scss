@@ -2,12 +2,14 @@ $primary: hsl(332, 100%, 30%);
 
 
 .NavbarItems {
-    background: linear-gradient(90deg, black 0%, red);
+    background: linear-gradient(90deg, black 0%, hsl(332, 100%, 30%));
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    white-space: nowrap; // not enlarge the button
+    text-overflow: ellipsis
 }
 
 .navbar-logo {
@@ -87,12 +89,12 @@ $primary: hsl(332, 100%, 30%);
         }
     }
 
-    .navbar-logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(25%, 50%)
-    }
+    // .navbar-logo {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // transform: translate(25%, 50%)
+    // }
 
     .menu-icon {
         display: block;
@@ -119,6 +121,7 @@ $primary: hsl(332, 100%, 30%);
         background: hsl(0, 100%, 40%);
         color: white;
         font-size: 1.5rem;
+        z-index: auto;
 
         &:hover {
             background: white;
@@ -127,7 +130,7 @@ $primary: hsl(332, 100%, 30%);
         }
     } 
 
-    Button {
+    .sign-up-button {
         display: none;
     }
 }

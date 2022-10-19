@@ -1,16 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Bot from 'pages/Bot';
-import Bughouse from 'pages/Bughouse';
-import Choker from 'pages/Choker';
-import NotFoundPage from 'pages/NotFound';
-import { UserContext } from './middleware/UserContext';
+import Bughouse from 'pages/Bughouse/Bughouse';
+import Choker from 'pages/Choker/Choker';
+import NotFoundPage from 'pages/NotFound/NotFound';
+// import { UserContext } from './middleware/UserContext';
 import Navbar from 'components/Navbar/Navbar';
 import Home from 'pages/Home/Home';
 import Rules from 'pages/Rules/Rules';
 import Leaderboard from 'pages/Leaderboard/Leaderboard';
 import SignUp from 'pages/Auth/SignUp';
 import LogIn from 'pages/Auth/LogIn';
-import Game from 'pages/Game/Game';
+import Dashboard from 'pages/Dashboard/Dashboard';
 
 export default function App() {
   return (
@@ -22,44 +21,37 @@ export default function App() {
             path="/"
             element={<Home />}
           />
-
           <Route
-            path="Game"
-            element={<Game />}
-          >
-            <Route
-              path="bot"
-              element={<Bot />}
-            />
-            <Route
-              path="bughouse"
-              element={<Bughouse />}
-            />
-            <Route
-              path="choker"
-              element={<Choker />}
-            />
-          </Route>
-
-          <Route
-            path="Rules"
+            path="rules"
             element={<Rules />}
           />
           <Route
-            path="Leaderboard"
+            path="leaderboard"
             element={<Leaderboard />}
           />
           <Route
-            path="SignUp"
+            path="sign-up"
             element={<SignUp />}
           />
           <Route
-            path="LogIn"
+            path="log-in"
             element={<LogIn />}
           />
           <Route
             path="*"
             element={<NotFoundPage />}
+          />
+          <Route
+            path="dashboard"
+            element={<Dashboard />}
+          />
+          <Route
+            path="bughouse"
+            element={<Bughouse />}
+          />
+          <Route
+            path="choker"
+            element={<Choker />}
           />
         </Routes>
       </Router>

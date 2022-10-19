@@ -1,0 +1,21 @@
+.section-wrapper {
+  width: 85%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);;
+  color: white;
+  margin: auto;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.bughouse {
+  margin-top: 1rem;
+}
+
+.chesspoker {
+  margin-top: 1rem;
+}

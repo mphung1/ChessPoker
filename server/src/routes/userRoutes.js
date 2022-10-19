@@ -13,7 +13,7 @@ router.get("/api/user/chips", async function (req,res) {
 
       try {
           const decoded = jwt.verify(token, "secret_key_123")
-          const email = decode.email
+          const email = decoded.email
           const user = await User.findOne({ email: email })
 
           return res.json({ status: 'ok', chips: user.chips })
@@ -28,7 +28,7 @@ router.post("/api/user/chips", async function (req,res) {
 
       try {
           const decoded = jwt.verify(token, "secret_key_123")
-          const email = decode.email
+          const email = decoded.email
           await User.updateOne(
             { email: email },
             { $set: { chips: req.body.chips }}

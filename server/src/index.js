@@ -27,14 +27,12 @@ io.on('connection', (socket) => {
     });
 });
 
+// app.use(cors({ origin: true, credentials: true }));
+app.use(cors());
 app.use(express.json());
-app.use(cors({ origin: true, credentials: true }));
 
 app.use(authRoutes);
 app.use(userRoutes);
-
-// app.use(notFound);
-// app.use(errorHandler);
 
 connectDB();
 

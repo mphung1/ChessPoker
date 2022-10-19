@@ -1,6 +1,7 @@
 
 $theme: HSL(200, 35%, 85%);
-$primaryColor: HSL(195, 100%, 40%);
+$primaryColor: HSL(2, 80%, 47%);;
+$secondaryColor: HSL(195, 100%, 40%);
 
 * {
   box-sizing: border-box;
@@ -11,7 +12,7 @@ $primaryColor: HSL(195, 100%, 40%);
 body {
   font: 14px "Lucida Console", "Courier New", monospace;
   background-color: $theme;
-  min-width: 32rem
+  // min-width: 32rem;
 }
 
 .board-row:after {

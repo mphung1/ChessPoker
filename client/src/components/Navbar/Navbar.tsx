@@ -2,7 +2,6 @@ import React from 'react';
 import { MenuItems } from './MenuItems';
 import './Navbar.scss';
 import { Button } from '../Button/Button';
-import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
   state = { clicked: false };
@@ -15,8 +14,11 @@ class Navbar extends React.Component {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">
-          <a href="." style={{ textDecoration: 'none', color: 'red' }}>
-          ChessDeck
+          <a
+            href="."
+            style={{ textDecoration: 'none', color: 'red' }}
+          >
+            ChessDeck
           </a>
         </h1>
         <div
@@ -41,7 +43,10 @@ class Navbar extends React.Component {
             );
           })}
         </ul>
-        <a href="SignUp" >
+        <a
+          href="sign-up"
+          className="sign-up-button"
+        >
           <Button>Sign Up</Button>
         </a>
       </nav>

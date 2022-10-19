@@ -1,9 +1,9 @@
 import React from 'react';
-import 'App.scss';
 import Board from 'components/Board';
 import King from 'components/pieces/King';
 import TakenPieces from 'components/TakenPieces';
 import initializeBoard from 'utils/initializeBoard';
+import './Bughouse.scss'
 
 export default class Multiplayer extends React.Component {
   constructor() {
@@ -103,10 +103,7 @@ export default class Multiplayer extends React.Component {
         <div className="game">
           <div className="game-board">
             <button>
-              Create room
-            </button>
-            <button>
-              Join room
+              Leave room
             </button>
             <Board
               squares={this.state.squares}

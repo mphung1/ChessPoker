@@ -6,17 +6,17 @@ export const MenuItems = [
   },
   {
     title: 'Rules',
-    url: '/Rules',
+    url: '/rules',
     cName: 'nav-links',
   },
   {
     title: 'Leaderboard',
-    url: '/Leaderboard',
+    url: '/leaderboard',
     cName: 'nav-links',
   },
   {
     title: 'Sign up',
-    url: '/SignUp',
+    url: '/sign-up',
     cName: 'nav-links-mobile',
   },
 ];
