@@ -99,12 +99,9 @@ export default class Multiplayer extends React.Component {
 
   render() {
     return (
-      <div>
         <div className="game">
           <div className="game-board">
-            <button>
-              Leave room
-            </button>
+          <div className="game-status">{this.state.status}</div>
             <Board
               squares={this.state.squares}
               onClick={(i) => this.handleClick(i)}
@@ -124,8 +121,6 @@ export default class Multiplayer extends React.Component {
               }
             </div>
           </div>
-        </div>
-          <div className="game-status">{this.state.status}</div>
       </div>
     );
   }

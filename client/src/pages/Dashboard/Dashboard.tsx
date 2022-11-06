@@ -2,29 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import jwt_decode from "jwt-decode";
-import './Dashboard.scss';
 import GameCard from 'components/GameCard/GameCard';
 import PopUp from '../../components/PopUp/PopUp'
+import './Dashboard.scss';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [chips, setChips] = useState<number|string>(0);
-  const [tempChips, setTempChips] = useState<number|string>(0);
-
-  async function populateResource() {
-    const res = await fetch('http://localhost:8080/api/user/chips', {
-      headers: {
-        'x-access-token': localStorage.getItem('token'),
-      },
-    });
-    const data = await res.json();
-    if (data.status === 'ok') {
-      setChips(data.chips);
-    } else {
-      alert(data.err);
-    }
-  }
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -34,32 +18,10 @@ const Dashboard = () => {
         localStorage.removeItem('token');
         navigate('/login', { replace: true });
       } else {
-        populateResource();
+        //
       }
     }
   }, []);
-
-  async function updateChips(e: React.ChangeEvent<any>) {
-    e.preventDefault();
-    const res = await fetch('http://localhost:8080/api/user/chips', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
-        chips: tempChips,
-      }),
-    });
-
-    const data = await res.json();
-    if (data.status === 'ok') {
-      setChips(tempChips);
-      setTempChips(0);
-    } else {
-      alert(data.err);
-    }
-  }
 
   const togglePopup = () => {
     setIsOpenModal(!isOpenModal);
@@ -81,19 +43,6 @@ const Dashboard = () => {
           onClickCreate={togglePopup}
         />
       </div>
-      <h1> Your chips: {chips}</h1>
-      <form onSubmit={updateChips}>
-        <input
-          type="text"
-          placeholder="Set your chips"
-          value={tempChips}
-          onChange={(e) => setTempChips(e.target.value)}
-        />
-        <input
-          type="submit"
-          value="Update chips"
-        />
-      </form>
       {isOpenModal && <PopUp
       content={<>
         <b>Design your Popup</b>
@@ -101,7 +50,7 @@ const Dashboard = () => {
         <button>Test button</button>
       </>}
       handleClose={togglePopup}
-    />}
+      />}
       <Outlet />
     </div>
   );

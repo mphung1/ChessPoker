@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
-// import  {useNavigate} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import  { useNavigate } from 'react-router-dom';
 import { useAuth } from 'hooks/AuthContext';
+import { UserContext } from '../../App';
 
 const LogIn = (props: any) => {
-  // const { isUserLoggedIn, userAuth } = props
+  const navigate = useNavigate();
+  const {state, dispatch} = useContext(UserContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const { isUserLoggedIn, userAuth } = props;
   // const { setAuth } = useAuth();
+
 
   async function loginUser(e: React.ChangeEvent<any>) {
     e.preventDefault();
@@ -23,13 +28,11 @@ const LogIn = (props: any) => {
     const data = await res.json();
 
     if (data.user) {
+      dispatch({type: 'USER', payload: true})
       localStorage.setItem('token', data.user);
-
       alert('Log in successfully');
-      // setAuth(true);
-      window.location.href = '/dashboard';
-
-    } else {
+      navigate('/dashboard');
+    } else { // res.status === 400 || !data.user
       alert('Your email or password is incorrect');
     }
   }

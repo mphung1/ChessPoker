@@ -53,12 +53,12 @@ router.post("/api/auth/login", async function (req,res) {
       res.json({status: 'ok'})
 });
 
+router.get('/api/auth/logout', async function(req, res) {
+  res.clearCookie('token', { path: '/' })
+  res.status(200).send('User Logout')
+});
+
 router.get("/api/auth/logged-user", async function(req, res) {
-  // if (req.isAuthenticated()) {
-  //   next()
-  // } else {
-  // res.redirect('/log-in');
-  // }
 });
 
 module.exports = router;
