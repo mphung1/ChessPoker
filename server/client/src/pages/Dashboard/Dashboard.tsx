@@ -18,7 +18,6 @@ const Dashboard = () => {
         localStorage.removeItem('token');
         navigate('/login', { replace: true });
       } else {
-        //
       }
     }
   }, []);

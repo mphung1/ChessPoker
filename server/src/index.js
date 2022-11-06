@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require('cookie-session');
 const cors = require("cors");
 const http = require('http');
 const dotenv = require('dotenv');
@@ -13,7 +14,7 @@ dotenv.config();
 
 const app = express();
 const httpServer = http.createServer(app);
-const port = 8080 || process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 const io = SocketIO(httpServer, {
   cors: {
@@ -82,20 +83,23 @@ io.on('connection', (socket) => {
 
 app.use(cors());
 app.use(express.json());
-
-const session = require('express-session');
 app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: 'secret_key_123'
 }));
 
-app.use(passport.initialize())
-app.use(passport.session())
-
 app.use(authRoutes);
 app.use(userRoutes);
 
 connectDB();
 
-httpServer.listen(port, () => console.log(`listening on port ${port}`))
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
+httpServer.listen(PORT, () => console.log(`listening on port ${PORT}`))
