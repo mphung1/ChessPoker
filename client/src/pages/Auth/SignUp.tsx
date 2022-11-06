@@ -23,7 +23,7 @@ const SignUp = () => {
     const data = await res.json();
 
     if (data.status === "ok") {
-      navigate('/login')
+      navigate('/log-in')
     }
   }
 

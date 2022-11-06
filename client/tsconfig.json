@@ -13,6 +13,7 @@
       "middleware/*": ["middleware/*", "middleware/"],
       "connection/*": ["connection/*", "connection/"],
       "utils/*": ["utils/*", "utils/"],
+      "hooks/*": ["hooks/*", "hooks/"]
     },
     "noImplicitAny": true,
     "allowJs": true,

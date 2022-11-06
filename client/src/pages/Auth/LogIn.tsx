@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+// import  {useNavigate} from 'react-router-dom';
+import { useAuth } from 'hooks/AuthContext';
 
-const LogIn = () => {
+const LogIn = (props: any) => {
+  // const { isUserLoggedIn, userAuth } = props
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const { setAuth } = useAuth();
 
   async function loginUser(e: React.ChangeEvent<any>) {
     e.preventDefault();
@@ -20,8 +24,11 @@ const LogIn = () => {
 
     if (data.user) {
       localStorage.setItem('token', data.user);
-      alert('Login Successful');
+
+      alert('Log in successfully');
+      // setAuth(true);
       window.location.href = '/dashboard';
+
     } else {
       alert('Your email or password is incorrect');
     }
@@ -51,7 +58,7 @@ const LogIn = () => {
           value="Log in"
         />
         <div> Don't have an account? </div>
-        <a href="/SignUp"> Sign Up </a>
+        <a href="/sign-up"> Sign Up </a>
       </form>
     </div>
   );

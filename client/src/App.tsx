@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Bughouse from 'pages/Bughouse/Bughouse';
 import Choker from 'pages/Choker/Choker';
@@ -10,12 +11,27 @@ import Leaderboard from 'pages/Leaderboard/Leaderboard';
 import SignUp from 'pages/Auth/SignUp';
 import LogIn from 'pages/Auth/LogIn';
 import Dashboard from 'pages/Dashboard/Dashboard';
+import {useAuth} from 'hooks/AuthContext';
+import GameNavbar from 'components/GameNavbar/GameNavbar'
 
 export default function App() {
+  // const { auth } = useAuth();
+  const [isUserLoggedIn, setUserLoggedIn] = useState(false)
+
+  const user = localStorage.getItem('token')
+  if (user) {
+    setUserLoggedIn(true)
+  }
+
+  const userAuth = () => {
+    setUserLoggedIn(!isUserLoggedIn)
+    window.location.href = '/log-in';
+  }
+
   return (
     <div className="App">
-      <Navbar />
       <Router>
+      <Navbar isUserLoggedIn={isUserLoggedIn} userAuth={userAuth}/>
         <Routes>
           <Route
             path="/"

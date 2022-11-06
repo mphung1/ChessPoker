@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Choker.scss';
 import { Outlet } from 'react-router-dom';
 import { FaRegUser } from 'react-icons/fa';
-import socket from '../../connection/socket';
+import socket from 'connection/socket';
 
 export default function Choker() {
   const [message, setMessage] = useState('');

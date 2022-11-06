@@ -3,9 +3,11 @@ import './GameCard.scss';
 interface Props {
   gameMode: string;
   description: string;
+  onClickJoin: any;
+  onClickCreate: any
 }
 
-const GameCard = ({ gameMode, description }: Props) => {
+const GameCard = ({ gameMode, description, onClickJoin, onClickCreate }: Props) => {
   return (
     <div className="wrapper">
       <div className="overview-info">
@@ -28,7 +30,7 @@ const GameCard = ({ gameMode, description }: Props) => {
         <p> {description} </p>
 
         <div className="button-group">
-          <button className="single-button">
+          <button className="single-button" onClick={onClickJoin}>
             <p>Join Room</p>
             <div className="buttonaction">
               <svg
@@ -46,7 +48,7 @@ const GameCard = ({ gameMode, description }: Props) => {
             </div>
           </button>
 
-          <button className="single-button">
+          <button className="single-button" onClick={onClickCreate}>
             <p>Create Room</p>
             <div className="buttonaction">
               <svg

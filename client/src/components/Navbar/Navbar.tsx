@@ -1,57 +1,99 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MenuItems } from './MenuItems';
 import './Navbar.scss';
 import { Button } from '../Button/Button';
 
-class Navbar extends React.Component {
-  state = { clicked: false };
+function Navbar(props: any) {
+  const {isUserLoggedIn, userAuth} = props
+  const [clicked, setClicked] = useState(false)
 
-  handleClick = () => {
-    this.setState({ clicked: !this.state.clicked });
+  const handleClick = () => {
+    setClicked(!clicked)
   };
 
-  render() {
     return (
-      <nav className="NavbarItems">
-        <h1 className="navbar-logo">
-          <a
-            href="."
-            style={{ textDecoration: 'none', color: 'red' }}
+    <>
+      { isUserLoggedIn ? (
+        <nav className="NavbarItems">
+          <h1 className="navbar-logo">
+            <a
+              href="."
+              style={{ textDecoration: 'none', color: 'red' }}
+            >
+              ChessDeck
+            </a>
+          </h1>
+          <div
+            className="menu-icon"
+            onClick={handleClick}
           >
-            ChessDeck
+            <i
+              className={clicked ? 'fas fa-times' : 'fas fa-bars'}
+            ></i>
+          </div>
+          <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
+            {MenuItems.map((item, index) => {
+              return (
+                <li key={index}>
+                  <a
+                    className={item.cName}
+                    href={item.url}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <a
+            className=""
+          >
+            <Button onClick={() => userAuth()}>Log Out</Button>
           </a>
-        </h1>
-        <div
-          className="menu-icon"
-          onClick={this.handleClick}
-        >
-          <i
-            className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}
-          ></i>
-        </div>
-        <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
-          {MenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <a
-                  className={item.cName}
-                  href={item.url}
-                >
-                  {item.title}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-        <a
-          href="sign-up"
-          className="sign-up-button"
-        >
-          <Button>Sign Up</Button>
-        </a>
-      </nav>
+        </nav>
+        ) : (
+          <nav className="NavbarItems">
+            <h1 className="navbar-logo">
+              <a
+                href="."
+                style={{ textDecoration: 'none', color: 'red' }}
+              >
+                ChessDeck
+              </a>
+            </h1>
+            <div
+              className="menu-icon"
+              onClick={handleClick}
+            >
+              <i
+                className={clicked ? 'fas fa-times' : 'fas fa-bars'}
+              ></i>
+            </div>
+            <ul className={clicked ? 'nav-menu active' : 'nav-menu'}>
+              {MenuItems.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <a
+                      className={item.cName}
+                      href={item.url}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+            <a
+              href="sign-up"
+              className="sign-up-button"
+            >
+              <Button>Sign Up</Button>
+            </a>
+          </nav>
+        )
+        }
+      </>
     );
-  }
 }
 
 export default Navbar;

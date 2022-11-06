@@ -6,11 +6,8 @@ const User = require("../models/User");
 const generateToken = require("../config/generateToken");
 
 const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
 
 router.post("/api/auth/register", async function (req,res) {
-    console.log(req.body);
     try {
       const newPassword = await bcrypt.hash(req.body.password, saltRounds);
       await User.create({
@@ -34,7 +31,6 @@ router.post("/api/auth/login", async function (req,res) {
       })
 
       if (!user) {
-
         return { status: 'error', err: 'Failed login attempt' }
       }
 
@@ -54,8 +50,15 @@ router.post("/api/auth/login", async function (req,res) {
       } else {
         return res.json({ status: 'error', user: false })
       }
-
       res.json({status: 'ok'})
+});
+
+router.get("/api/auth/logged-user", async function(req, res) {
+  // if (req.isAuthenticated()) {
+  //   next()
+  // } else {
+  // res.redirect('/log-in');
+  // }
 });
 
 module.exports = router;

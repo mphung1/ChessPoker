@@ -4,9 +4,11 @@ import jwt from 'jsonwebtoken';
 import jwt_decode from "jwt-decode";
 import './Dashboard.scss';
 import GameCard from 'components/GameCard/GameCard';
+import PopUp from '../../components/PopUp/PopUp'
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [chips, setChips] = useState<number|string>(0);
   const [tempChips, setTempChips] = useState<number|string>(0);
 
@@ -59,16 +61,24 @@ const Dashboard = () => {
     }
   }
 
+  const togglePopup = () => {
+    setIsOpenModal(!isOpenModal);
+  }
+
   return (
     <div>
       <div className="game-cards">
         <GameCard
           gameMode="Bughouse"
           description="Bring captured pieces back into play."
+          onClickJoin={togglePopup}
+          onClickCreate={togglePopup}
         />
         <GameCard
           gameMode="Chess Poker"
           description="An interesting combination of chess & poker, inspired by Choker App."
+          onClickJoin={togglePopup}
+          onClickCreate={togglePopup}
         />
       </div>
       <h1> Your chips: {chips}</h1>
@@ -84,6 +94,14 @@ const Dashboard = () => {
           value="Update chips"
         />
       </form>
+      {isOpenModal && <PopUp
+      content={<>
+        <b>Design your Popup</b>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <button>Test button</button>
+      </>}
+      handleClose={togglePopup}
+    />}
       <Outlet />
     </div>
   );
