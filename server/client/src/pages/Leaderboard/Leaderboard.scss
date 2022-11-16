@@ -1,23 +1,26 @@
+.layout {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 10rem
+}
+
 .container {
-    width: 300px;
+    width: 18rem;
     height: auto;
     border-radius: 10px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 1rem;
     z-index: 0;
     overflow: hidden;
   }
-  
-  /* leaderboard */
+
   .leaderboard {
     background: linear-gradient(to bottom, #3a404d, #181c26);
   }
-  
-  /* head */
+
   .leaderboard .head {
     padding: 20px 16px;
     color: snow;
@@ -28,14 +31,13 @@
     display: inline-block;
     margin-left: 4px;
   }
-  
-  /* body */
+
   .leaderboard .body {
     color: snow;
     font-size: 16px;
   }
   .leaderboard ol {
-    counter-reset: number; /* 定義和初始化計數器 */
+    counter-reset: number;
   }
   .leaderboard li {
     padding: 16px;
@@ -47,8 +49,8 @@
     background-color: transparent;
   }
   .leaderboard li:before {
-    counter-increment: number; /* 遞增計數器 */
-    content: counter(number) "."; /* 顯示計數器 */
+    counter-increment: number;
+    content: counter(number) ".";
     margin-right: 4px;
   }
   .leaderboard li:nth-child(1) {
@@ -65,4 +67,16 @@
   }
   .leaderboard li:nth-child(5) {
     background: #c24448;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .layout {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 0;
+    }
+    .container {
+      width: auto;
+    }
   }

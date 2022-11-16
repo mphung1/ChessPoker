@@ -4,17 +4,18 @@ interface Props {
   gameMode: string;
   description: string;
   onClickJoin: any;
-  onClickCreate: any
+  onClickCreate: any;
+  rating: number;
 }
 
-const GameCard = ({ gameMode, description, onClickJoin, onClickCreate }: Props) => {
+const GameCard = ({ gameMode, description, onClickJoin, onClickCreate, rating }: Props) => {
   return (
     <div className="wrapper">
       <div className="overview-info">
         <div className="mode-info">
           <div className="grouptext">
-            <h3>Difficulty</h3>
-            <p>4</p>
+            <h3>Your rating</h3>
+            <p>{rating}</p>
           </div>
           <div className="image">
             <img

@@ -59,6 +59,7 @@ router.get('/api/auth/logout', async function(req, res) {
 });
 
 router.get("/api/auth/logged-user", async function(req, res) {
+  res.status(200).send('User is logged in')
 });
 
 module.exports = router;

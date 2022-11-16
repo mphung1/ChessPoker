@@ -7,7 +7,7 @@ const LogOut = () => {
   const { state, dispatch } = useContext(UserContext)
 
   useEffect(() => {
-      fetch('http://localhost:8080/api/auth/logout', {
+      fetch('/api/auth/logout', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

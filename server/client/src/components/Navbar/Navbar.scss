@@ -1,6 +1,5 @@
 $primary: hsl(332, 100%, 30%);
 
-
 .NavbarItems {
     background: linear-gradient(90deg, black 0%, hsl(332, 100%, 30%));
     height: 80px;
@@ -27,7 +26,7 @@ $primary: hsl(332, 100%, 30%);
     text-align: center;
     width: 70vw;
     justify-content: end;
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 .nav-links {
@@ -51,6 +50,24 @@ $primary: hsl(332, 100%, 30%);
 
 .menu-icon {
     display: none;
+}
+
+.user-resource {
+  &:hover {
+    padding: 0.3rem 0.5rem;
+    transition: all 0.1s ease-out;
+    background: hsl(0,0,50%);
+    color: black;
+    transition: 250ms;
+    border-radius: 0.5rem;
+
+    span {
+      display: none
+    }
+    ::before {
+      content: "Update"
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -89,13 +106,6 @@ $primary: hsl(332, 100%, 30%);
         }
     }
 
-    // .navbar-logo {
-        // position: absolute;
-        // top: 0;
-        // left: 0;
-        // transform: translate(25%, 50%)
-    // }
-
     .menu-icon {
         display: block;
         position: absolute;
@@ -126,9 +136,9 @@ $primary: hsl(332, 100%, 30%);
         &:hover {
             background: white;
             color: black;
-            transition: 250ms; 
+            transition: 250ms;
         }
-    } 
+    }
 
     .sign-up-button {
         display: none;

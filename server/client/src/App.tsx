@@ -1,7 +1,7 @@
 import React, { useState, createContext, useReducer } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Bughouse from 'pages/Bughouse/Bughouse';
-import Choker from 'pages/Choker/Choker';
+import ChessPoker from 'pages/ChessPoker/ChessPoker';
 import NotFoundPage from 'pages/NotFound/NotFound';
 import Navbar from 'components/Navbar/Navbar';
 import Home from 'pages/Home/Home';
@@ -67,8 +67,8 @@ export default function App() {
                 element={<Bughouse />}
               />
               <Route
-                path="choker"
-                element={<Choker />}
+                path="chesspoker"
+                element={<ChessPoker />}
               />
             </Routes>
           </Router>

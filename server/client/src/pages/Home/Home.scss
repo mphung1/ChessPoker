@@ -5,16 +5,6 @@
     transform: translate(-50%, -50%);
     text-align: center;
 
-    h1 {
-        font-size: 3rem;
-        color: hsl(5, 90%, 45%);
-    }
-
-    h3 {
-        color: black;
-        margin-bottom: 5rem;
-    }
-
     .home-btn {
         background-color: black;
         border: none;
@@ -24,6 +14,7 @@
         text-decoration: none;
         display: inline-block;
         font-size: 1.2rem;
+        margin-top: 10rem;
         &:hover{
             background-color: white;
             color: black

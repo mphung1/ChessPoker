@@ -20,9 +20,37 @@ const User = mongoose.Schema(
       type: Number,
       default: 10000
     },
+    ratings: {
+      bughouse: {
+        type: Number,
+        default: 1500
+      },
+      chesspoker: {
+        type: Number,
+        default: 1500
+      },
+    },
+    scores: {
+      bughouse_wins: {
+        type: Number,
+        default: 0
+      },
+      bughouse_losses: {
+        type: Number,
+        default: 0
+      },
+      chesspoker_wins: {
+        type: Number,
+        default: 0
+      },
+      chesspoker_losses: {
+        type: Number,
+        default: 0
+      },
+    },
     image: {
       type: String,
-      default: './default_user.png'
+      default: 'https://static.thenounproject.com/png/5034901-200.png'
     }
   },
  {

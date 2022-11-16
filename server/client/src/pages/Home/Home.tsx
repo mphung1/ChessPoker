@@ -1,5 +1,5 @@
 import Hero from 'components/Hero/Hero';
-import background from './background1.jpg';
+import background from './bg1.jpg';
 import './Home.scss';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,8 +13,6 @@ const Home = () => {
     <div>
       <Hero background={background}>
         <div className="center">
-          <h1> Welcome </h1>
-          <h3> This game is a variation of chess and poker. </h3>
           <button
             className="btn home-btn"
             onClick={routeChange}

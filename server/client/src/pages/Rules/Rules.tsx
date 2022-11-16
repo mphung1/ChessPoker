@@ -1,5 +1,5 @@
 import Hero from 'components/Hero/Hero';
-import background from './background2.jpeg';
+import background from './bg2.jpeg';
 import './Rules.scss'
 
 const Rules = () => {

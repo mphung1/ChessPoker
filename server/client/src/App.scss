@@ -8,11 +8,15 @@ $secondaryColor: HSL(195, 100%, 40%);
   padding: 0;
 }
 
-html,body{ margin:0; padding:0; height:100%; width:100%; }
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+}
 
 body {
   font: 14px "Lucida Console", "Courier New", monospace;
-  background-color: $theme;
 }
 
 .board-row:after {

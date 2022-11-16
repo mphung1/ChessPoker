@@ -1,9 +1,46 @@
-.game {
+.game-board {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  margin-left: 7rem;
   text-align: center;
 }
 
+.bodybox {
+    max-width: 20rem;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 10rem;
+    // box-shadow: 5px 5px 5px grey;
+    border-radius: 0.25rem;
+    margin-top: 17rem;
+    margin-left: 1rem;
+}
+
+.chatborder {
+    border-style: solid;
+    background-color: #f6f9f6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+.chatbox {
+    height: 1.5rem;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bodybox {
+    display: none
+  }
+}
+
 .game-status {
+}
+
+.game-clock {
+  float: right
 }

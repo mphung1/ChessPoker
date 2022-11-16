@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import  { useNavigate } from 'react-router-dom';
 import { useAuth } from 'hooks/AuthContext';
 import { UserContext } from '../../App';
+import Hero from 'components/Hero/Hero';
+import background from './bg4.jpg';
 
 const LogIn = (props: any) => {
   const navigate = useNavigate();
@@ -9,13 +11,10 @@ const LogIn = (props: any) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const { isUserLoggedIn, userAuth } = props;
-  // const { setAuth } = useAuth();
-
 
   async function loginUser(e: React.ChangeEvent<any>) {
     e.preventDefault();
-    const res = await fetch('http://localhost:8080/api/auth/login', {
+    const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,31 +37,35 @@ const LogIn = (props: any) => {
   }
 
   return (
-    <div className="auth-form">
-      <form onSubmit={loginUser}>
-        <input
-          value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
-          type="email"
-          placeholder="Email"
-        />
-        <br />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="Password"
-        />
-        <br />
-        <input
-          type="submit"
-          value="Log in"
-        />
-        <div> Don't have an account? </div>
-        <a href="/sign-up"> Sign Up </a>
-      </form>
+    <div>
+      <Hero background={background}>
+        <div className="auth-form">
+          <form onSubmit={loginUser}>
+            <input
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
+              type="email"
+              placeholder="Email"
+            />
+            <br />
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="Password"
+            />
+            <br />
+            <input
+              type="submit"
+              value="Log in"
+            />
+            <div style={{marginTop: '1rem'}}> Don't have an account? </div>
+            <a href="/sign-up"> Sign Up </a>
+          </form>
+        </div>
+      </Hero>
     </div>
   );
 };

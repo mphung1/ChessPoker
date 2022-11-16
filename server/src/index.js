@@ -6,10 +6,9 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes')
+const authRoutes = require('./routes/authRoutes');
 const connectDB = require('./config/db');
 const SocketIO = require('socket.io');
-const { notFound, errorHandler } = require('./middleware/error');
 dotenv.config();
 
 const app = express();
@@ -31,10 +30,14 @@ const messages = {
 }
 
 io.on('connection', (socket) => {
-    socket.on('message', (message) => {
-      // console.log(message);
-      io.emit('message', `${socket.id.substr(0,2)} said ${message}`);
+    socket.on('message', (msg) => {
+      console.log('Message from client: ' + msg);
+      io.emit('message', 'I am server');
     });
+
+    socket.on('move', (move) => {
+      io.emit('lastMove', move)
+    })
 
     socket.on('join server', (username) => {
       const user = {

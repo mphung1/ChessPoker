@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-import './Choker.scss';
+import './ChessPoker.scss';
 import { Outlet } from 'react-router-dom';
 import { FaRegUser } from 'react-icons/fa';
 import socket from 'connection/socket';
 
-export default function Choker() {
-  const [message, setMessage] = useState('');
-
-  socket.on('message', (text: string) => {
-    setMessage(text);
-  });
-
-  // socket.on('createTable')
-
+export default function ChessPoker() {
   return (
     <div>
       <div className="center">
@@ -70,7 +62,6 @@ export default function Choker() {
         </div>
       </div>
 
-      <div>{message}</div>
       <Outlet />
     </div>
   );

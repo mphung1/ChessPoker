@@ -9,6 +9,26 @@ import './Dashboard.scss';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [userRatings, setUserRatings] = useState([]);
+
+  useEffect(() => {
+    async function getUserRatings() {
+      const res = await fetch('/api/user/ratings', {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token': localStorage.getItem('token'),
+        },
+      });
+      const data = await res.json();
+      if (data.status === 'ok') {
+        setUserRatings([data.ratings.bughouse, data.ratings.chesspoker]);
+      } else {
+        alert(data.err);
+      }
+    }
+
+      getUserRatings();
+  }, [])
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -34,12 +54,14 @@ const Dashboard = () => {
           description="Bring captured pieces back into play."
           onClickJoin={togglePopup}
           onClickCreate={togglePopup}
+          rating={userRatings[0]}
         />
         <GameCard
           gameMode="Chess Poker"
           description="An interesting combination of chess & poker, inspired by Choker App."
           onClickJoin={togglePopup}
           onClickCreate={togglePopup}
+          rating={userRatings[1]}
         />
       </div>
       {isOpenModal && <PopUp
